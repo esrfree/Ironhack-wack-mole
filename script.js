@@ -5,6 +5,7 @@ window.onload = function(){
     let mole = document.createElement('div');
     mole.classList.add('mole');
     let currentScore = 10;
+    document.querySelector('.score').innerText = currentScore;
 
 
     function randomMole() {
@@ -31,28 +32,28 @@ window.onload = function(){
     function score( ev ) {
        if ( ev.target.className == mole.className ) {
             currentScore++;
+            document.querySelector('.score').innerText = currentScore;
             mole.remove();
             if (currentScore > 15) {
                 alert( `You win, you can start again`)
                 currentScore = 10;
+                document.querySelector('.score').innerText = currentScore;
                 return;
              }
-            console.log( currentScore )
        }
        else if( ev.target.className !== mole.className ) {
            currentScore--;
+           document.querySelector('.score').innerText = currentScore;
            if (currentScore == 0) {
                alert( `You lose, now you have 10 pts again to play with`)
                currentScore = 10;
+               document.querySelector('.score').innerText = currentScore;
                return;
             }
-            console.log( currentScore)
         }
-        
     }
- 
+    
     randomMole()
-    //mole.onclick = score;
     window.onclick = score;
     
  
